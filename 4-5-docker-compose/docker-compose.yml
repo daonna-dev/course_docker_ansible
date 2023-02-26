@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  database:
+    container_name: postgres_chapter_4-5
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "${PG_PASSWORD}"
+    volumes:
+      - /home/preantas/data:/var/lib/postgresql/data
+    networks:
+      - database-network
+    ports:
+      - 5432:5432
+
+networks:
+  database-network:
+    name: my-pg-network
+    driver: bridge
